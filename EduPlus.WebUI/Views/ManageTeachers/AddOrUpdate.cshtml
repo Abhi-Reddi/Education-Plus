@@ -1,0 +1,41 @@
+﻿@model EduPlus.Models.Teacher
+
+@{
+    if (Model == null || Model.TeacherId == 0)
+    {
+        ViewBag.Title = "Add Teacher";
+    }
+    else
+    {
+        ViewBag.Title = "Update Teacher";
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+
+            <a href="/ManageTeachers/" class="btn btn-outline-secondary vspace">Back</a>
+
+            @if (Model == null || Model.TeacherId == 0)
+            {
+                <input type="submit" value="Add" class="btn btn-primary vspace" />
+            }
+            else
+            {
+                <input type="hidden" name="TeacherId" value="@Model.TeacherId" />
+                <input type="submit" value="Update" class="btn btn-primary vspace" />
+            }
+        </div>
+    </div>
+}

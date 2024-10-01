@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EduPlus.Models.Teacher>
+
+@{
+    ViewBag.Title = "Manage Teachers";
+}
+
+<p>
+    @Html.ActionLink("Click here to Add", "AddOrUpdate", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TeacherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.TeacherId
+                </td>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "AddOrUpdate", new { id = item.TeacherId }, new { @class = "btn btn-outline-primary" })
+
+                    @using (Html.BeginForm("Remove", "ManageTeachers"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("TeacherId", item.TeacherId)
+                        <input type="submit" value="Remove" class="btn btn-danger" onclick="return removeConfirmation();" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function removeConfirmation() {
+            return confirm("Are you sure you want to remove this teacher?");
+        }
+    </script>
+}

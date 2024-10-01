@@ -1,0 +1,45 @@
+﻿@model EduPlus.Models.Lecture
+
+@{
+    if (Model == null || Model.LectureId == 0)
+    {
+        ViewBag.Title = "Add Lecture";
+    }
+    else
+    {
+        ViewBag.Title = "Update Lecture";
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.LabelFor(model => model.MinMinutes, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.MinMinutes, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MinMinutes, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.LabelFor(model => model.MaxMinutes, htmlAttributes: new { @class = "control-label" })
+            @Html.ValidationMessageFor(model => model.MaxMinutes, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.MaxMinutes, new { htmlAttributes = new { @class = "form-control" } })
+
+            <a href="/ManageLectures/" class="btn btn-outline-secondary vspace">Back</a>
+
+            @if (Model == null || Model.LectureId == 0)
+            {
+                <input type="submit" value="Add" class="btn btn-primary vspace" />
+            }
+            else
+            {
+                <input type="hidden" name="LectureId" value="@Model.LectureId" />
+                <input type="submit" value="Update" class="btn btn-primary vspace" />
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EduPlus.Models.Lecture>
+
+@{
+    ViewBag.Title = "Manage Lectures";
+}
+
+<p>
+    @Html.ActionLink("Click here to Add", "AddOrUpdate", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().LectureId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MinMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MaxMinutes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.LectureId
+                </td>
+                <td>
+                    @item.Subject
+                </td>
+                <td>
+                    @item.MinMinutes
+                </td>
+                <td>
+                    @item.MaxMinutes
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "AddOrUpdate", new { id = item.LectureId }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Manage Lecture Teachers", "Index", "ManageLectureTeachers", new { id = item.LectureId }, new { @class = "btn btn-outline-primary" })
+
+                    @using (Html.BeginForm("Remove", "ManageLecture"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("LectureId", item.LectureId)
+                        <input type="submit" value="Remove" class="btn btn-danger" onclick="return removeConfirmation();" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function removeConfirmation() {
+            return confirm("Are you sure you want to remove this lecture?");
+        }
+    </script>
+}

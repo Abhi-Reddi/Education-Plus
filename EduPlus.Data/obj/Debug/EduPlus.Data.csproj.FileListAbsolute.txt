@@ -1,0 +1,9 @@
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\bin\Debug\EduPlus.Data.dll
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\bin\Debug\EduPlus.Data.pdb
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\bin\Debug\EduPlus.Models.dll
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\bin\Debug\EduPlus.Models.pdb
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\obj\Debug\EduPlus.Data.csproj.AssemblyReference.cache
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\obj\Debug\EduPlus.Data.csproj.CoreCompileInputs.cache
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\obj\Debug\EduPlus..D4099E4F.Up2Date
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\obj\Debug\EduPlus.Data.dll
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Data\obj\Debug\EduPlus.Data.pdb

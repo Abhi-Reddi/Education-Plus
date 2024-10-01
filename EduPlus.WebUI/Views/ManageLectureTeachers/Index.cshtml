@@ -1,0 +1,82 @@
+﻿@model EduPlus.WebUI.Models.LectureTeachersViewModel
+
+@{
+    ViewBag.Title = "Manage Teachers for Lecture: " + Model.Lecture.Subject;
+}
+
+@if (Model.NonAssociatedTeachers.Any())
+{
+    using (Html.BeginForm("AddOrUpdate", "ManageLectureTeachers"))
+    {
+        @Html.AntiForgeryToken();
+        <input type="hidden" name="lectureId" value="@Model.Lecture.LectureId" />
+        <select name="teacherId" onchange="selectChange(this)">
+            <option>(Select a teacher to add to this lecture)</option>
+            @foreach (var teacher in Model.NonAssociatedTeachers)
+            {
+                <option value="@teacher.TeacherId">
+                    @teacher.FullName
+                </option>
+            }
+        </select>
+        <button id="btnAdd" type="submit" class="btn btn-primary" disabled>Click here to Add</button>
+    }
+}
+else
+{
+    if (Model.AssociatedTeachers.Any())
+    {
+        <p>This lecture is associated with all available teachers.</p>
+    }
+}
+
+@if (Model.AssociatedTeachers.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Teacher ID</th>
+                <th>Full Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var teacher in Model.AssociatedTeachers)
+            {
+                <tr>
+                    <td>
+                        <input type="text" value="@teacher.TeacherId" style="width:150px;" class="form-control classname" readonly />
+                    </td>
+                    <td>
+                        <input type="text" value="@teacher.FullName" style="width:350px;" class="form-control classname" readonly />
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Remove", "ManageLectureTeachers"))
+                        {
+                            @Html.AntiForgeryToken();
+                            <input type="hidden" name="lectureId" value="@Model.Lecture.LectureId" />
+                            <input type="hidden" name="teacherId" value="@teacher.TeacherId" />
+                            <input type="submit" value="Remove" class="btn btn-danger" onclick="return removeConfirmation();" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>This lecture has no associated teachers.</p>
+}
+
+@section Scripts {
+    <script>
+        function selectChange(select) {
+            document.getElementById("btnAdd").disabled = select.selectedIndex === 0;
+        }
+
+        function removeConfirmation() {
+            return confirm("Are you sure you want to remove this teacher from the lecture?");
+        }
+    </script>
+}

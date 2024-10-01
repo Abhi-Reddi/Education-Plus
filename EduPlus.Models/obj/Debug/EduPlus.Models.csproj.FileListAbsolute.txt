@@ -1,0 +1,6 @@
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\bin\Debug\EduPlus.Models.dll
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\bin\Debug\EduPlus.Models.pdb
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\obj\Debug\EduPlus.Models.csproj.AssemblyReference.cache
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\obj\Debug\EduPlus.Models.csproj.CoreCompileInputs.cache
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\obj\Debug\EduPlus.Models.dll
+C:\Users\ABHILASH\source\repos\2024\Fall\EduPlus\EduPlus.Models\obj\Debug\EduPlus.Models.pdb
